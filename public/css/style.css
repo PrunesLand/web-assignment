@@ -1,0 +1,78 @@
+/* CSS HEX */
+/* --charcoal: #264653ff;
+--persian-green: #2a9d8fff;
+--orange-yellow-crayola: #e9c46aff;
+--sandy-brown: #f4a261ff;
+--burnt-sienna: #e76f51ff; */
+
+
+
+/* sample spreadshet - you should replace all of this! */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* header section */
+header{
+    height: 10vh;
+    background-color: #264653ff;
+}
+
+header nav{
+    height: inherit;
+    width: 40%;
+}
+
+header ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+header ul li{
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header ul li a{
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: #e76f51ff;
+}
+
+header ul li a:hover{
+    color: #f4a261ff;
+    text-decoration: underline;
+}
+
+/* heading section */
+
+#heading{
+    height: 20vh;
+    background-color: #264653ff;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#heading hgroup h1{
+    color: #e76f51ff;
+    font-size: 4rem;
+}
+
+#heading hgroup h1:hover{
+    color: #f4a261ff;
+    font-size: 4rem;
+}
+
+/* three posts section */
+
+#highlight{
+    height: 20vh;
+ 
+}
