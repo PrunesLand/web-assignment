@@ -109,21 +109,39 @@ const Model = {
         for (let i = 0; i < N; i++) {
             randomPosts.push(this.getPost(posts[Math.floor(Math.random() * posts.length)].id))
         }
-        let event = new CustomEvent("threeposts");
-        window.dispatchEvent(event)
         return randomPosts;
     },
 
     // getRecentPosts - return the N most recent as an array
     //  posts, ordered by timestamp, most recent first
     getRecentPosts: function (N) {
+        let posts = this.getPosts()
 
+        let recentPost = []
+
+        for (let i = 0; i <= 9; i++) {
+            recentPost.push(posts[i])
+        }
+
+        recentPost.sort((a, b) => (a.published_at > b.published_at) ? 1 : -1)
+
+        return recentPost
     },
 
     // getPopularPosts - return the N most popular as an array
     // posts, ordered by the number of likes
     getPopularPosts: function (N) {
+        let posts = this.getPosts()
 
+        let popularPost = []
+
+        for (let i = 0; i <= 9; i++) {
+            popularPost.push(posts[i])
+        }
+
+        popularPost.sort((a, b) => (a.p_likes > b.p_likes) ? 1 : -1)
+
+        return popularPost
     },
 
 }

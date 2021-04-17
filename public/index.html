@@ -47,6 +47,16 @@
         </div>
       </div>
 
+      <div id="main-post-container">
+
+        <div id="recentposts">
+
+        </div>
+        <div id="popularposts">
+
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -78,9 +88,32 @@
                 <img src={{p_url}}>
                 <div>{{p_caption}}</div>
                 <div>{{p_likes}}</div>
+                <div>{{p_author.username}}</div>
               </div>
           {{/each}}
   </script>
+
+  <script id="recentposts-list" type="text/x-handlebars-template">
+    {{#each data}}
+          <img src={{p_url}} style="width: 50px;">
+          <div>{{p_caption}}</div>
+          <div>{{p_author.username}}</div>
+          <div>{{published_at}}</div>
+          <div>{{p_likes}}</div>
+          <button>Like</button>
+    {{/each}}
+</script>
+
+  <script id="popularposts-list" type="text/x-handlebars-template">
+  {{#each data}}
+        <img src={{p_url}} style="width: 50px;">
+        <div>{{p_caption}}</div>
+        <div>{{p_author.username}}</div>
+        <div>{{published_at}}</div>
+        <div>{{p_likes}}</div>
+        <button>Like</button>
+  {{/each}}
+</script>
 
 </body>
 
