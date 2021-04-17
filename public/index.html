@@ -42,7 +42,7 @@
       <div id="target"></div>
 
       <div id="highlight">
-        <div id="highlight-wrapper">
+        <div id="flowtow">
 
         </div>
       </div>
@@ -71,6 +71,16 @@
 
 
   <!-- Templates -->
+
+  <script id="threeposts-list" type="text/x-handlebars-template">
+          {{#each data}}
+              <div class="flowtow">
+                <img src={{p_url}}>
+                <div>{{p_caption}}</div>
+                <div>{{p_likes}}</div>
+              </div>
+          {{/each}}
+  </script>
 
 </body>
 

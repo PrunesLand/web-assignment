@@ -4,8 +4,8 @@ export { Model };
  * Module: <name>
  * < short description here e.g. "This module implements ...">
  *
- * Student Name:
- * Student Number:
+ * Student Name:    Pranaya Anargya
+ * Student Number:  45502773
  *
  */
 
@@ -36,13 +36,11 @@ const Model = {
         fetch(this.postsUrl)
             .then(
                 function (response) {
-
                     return response.json();
                 }
             )
             .then(
                 (data) => {
-
                     this.data.posts = data
                     console.log(data)
                     console.log('It is fetched!')
@@ -60,6 +58,13 @@ const Model = {
 
     // getPost - return a single post given its id
     getPost: function (postid) {
+        let posts = this.getPosts()
+
+        for (let i = 0; i < posts.length; i++) {
+            if (posts[i].id === postid) {
+                return posts[i]
+            }
+        }
 
     },
 
@@ -97,7 +102,16 @@ const Model = {
 
     //getRandomPosts - return N random posts as an array
     getRandomPosts: function (N) {
+        let posts = this.getPosts()
 
+        let randomPosts = []
+
+        for (let i = 0; i < N; i++) {
+            randomPosts.push(this.getPost(posts[Math.floor(Math.random() * posts.length)].id))
+        }
+        let event = new CustomEvent("threeposts");
+        window.dispatchEvent(event)
+        return randomPosts;
     },
 
     // getRecentPosts - return the N most recent as an array

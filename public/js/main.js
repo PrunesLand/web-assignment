@@ -8,43 +8,27 @@
  *
  */
 import { Model } from './model.js'
+import * as view from './views.js'
 
-function redraw() {
+window.addEventListener("modelUpdated", function (e) {
 
-    // let content = "<h2>API Test</h2><ul>";
-    // content += "<li><a href='/#'>Three Posts</a></li>";
-    // content += "<li><a href='/#'>Recent Posts</a></li>";
-    // content += "<li><a href='/#'>Popular Posts</a></li>";
-    // content += "<li><a href='/posts/1'>A Single Post</a></li>"; 
-    // content += "</ul>";
+    console.log('modelUpdated triggered')
+    let posts = Model.getPosts();
+    view.threePosts('flowtow', posts)
 
-    // // update the page
-    // document.getElementById("target").innerHTML = content;
+    // bindings();
+})
 
+window.addEventListener('threeposts', function (e) {
+    console.log('threeposts triggered')
+    let threepost = Model.getRandomPosts(3)
+    view.threePosts('flowtow', threepost)
+})
 
-
-    fetch('./js/sample.json')
-        .then(
-            response => {
-                response.json();
-                console.log("Response", response)
-            }
-
-
-        )
-        .then(
-            data => {
-                return JSON.stringify()
-            }
-
-        )
-
-
-}
 
 window.onload = function () {
     Model.updatePosts()
-    // redraw();
+
 };
 
 
