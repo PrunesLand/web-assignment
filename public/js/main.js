@@ -23,7 +23,7 @@ function redraw() {
 
 
 
-    fetch('posts')
+    fetch('./js/sample.json')
         .then(
             response => {
                 response.json();
@@ -33,14 +33,17 @@ function redraw() {
 
         )
         .then(
-            data => console.log(data)
+            data => {
+                return JSON.stringify()
+            }
+
         )
 
 
 }
 
 window.onload = function () {
-    Model.updatePosts();
+    Model.updatePosts()
     // redraw();
 };
 

@@ -45,6 +45,7 @@ const Model = {
 
                     this.data.posts = data
                     console.log(data)
+                    console.log('It is fetched!')
                     let event = new CustomEvent("modelUpdated");
                     window.dispatchEvent(event);
                 }
