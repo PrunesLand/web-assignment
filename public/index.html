@@ -48,15 +48,15 @@
       </div>
 
       <div id="main-post-container">
-
+        <div id="post"></div>
         <div id="recentposts">
           <ul id="recentpost-item">
 
           </ul>
         </div>
         <div id="popularposts">
-          <ul>
-            <li id="popularpost-item"></li>
+          <ul id="popularpost-item">
+
           </ul>
         </div>
       </div>
@@ -99,26 +99,53 @@
 
   <script id="recentposts-list" type="text/x-handlebars-template">
     {{#each data}}
-        <li>
-          <img src={{p_url}} class='tenImg'>
-          <div class="caption">{{p_caption}}</div>
-          <div class="username">{{p_author.username}}</div>
-          <div class="date">{{published_at}}</div>
-          <div class="likes">{{p_likes}}</div>
-          <button class="likeButton">Like</button>
+        <li class="recent-items">
+          <div>
+            <img src={{p_url}} class='tenImg'>
+          </div>
+          <div class="recent-items-content">
+            <div class="caption">{{p_caption}}</div>
+            <div class="username">{{p_author.username}}</div>
+            <div class="date">{{published_at}}</div>
+            <div class="likes">{{p_likes}}</div>
+            <button class="likeButton">Like</button>
+          </div>
         </li>  
     {{/each}}
 </script>
 
   <script id="popularposts-list" type="text/x-handlebars-template">
   {{#each data}}
-        <img src={{p_url}} style="width: 50px;">
-        <div>{{p_caption}}</div>
-        <div>{{p_author.username}}</div>
-        <div>{{published_at}}</div>
-        <div>{{p_likes}}</div>
-        <button>Like</button>
+        <li class="recent-items">
+          <div>
+            <a href="/#!/posts/">
+              <img src={{p_url}} class='tenImg' data-id={{id}}>
+            </a>
+          </div>
+          <div class="recent-items-content">
+            <div class="caption">{{p_caption}}</div>
+            <div class="username">{{p_author.username}}</div>
+            <div class="date">{{published_at}}</div>
+            <div class="likes">{{p_likes}}</div>
+            <button class="likeButton">Like</button>
+          </div>
+        </li>  
   {{/each}}
+</script>
+
+  <script id="postview" type="text/x-handlebars-template">
+        <li class="recent-items">
+          <div>
+            <img src={{p_url}} >
+          </div>
+          <div class="recent-items-content">
+            <div class="caption">{{p_caption}}</div>
+            <div class="username">{{p_author.username}}</div>
+            <div class="date">{{published_at}}</div>
+            <div class="likes">{{p_likes}}</div>
+            <button class="likeButton">Like</button>
+          </div>
+        </li>  
 </script>
 
 </body>

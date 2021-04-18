@@ -123,7 +123,7 @@ const Model = {
             recentPost.push(posts[i])
         }
 
-        recentPost.sort((a, b) => (a.published_at > b.published_at) ? 1 : -1)
+        recentPost.sort((a, b) => (a.published_at < b.published_at) ? 1 : -1)
 
         return recentPost
     },
@@ -139,7 +139,7 @@ const Model = {
             popularPost.push(posts[i])
         }
 
-        popularPost.sort((a, b) => (a.p_likes > b.p_likes) ? 1 : -1)
+        popularPost.sort((a, b) => (a.p_likes < b.p_likes) ? 1 : -1)
 
         return popularPost
     },

@@ -15,7 +15,7 @@
 }
 
 #content{
-    height: 90vh;
+    height: 120vh;
     
 }
 
@@ -133,4 +133,29 @@ header ul li a:hover{
 
 .tenImg{
     width: 50px;
+}
+
+.recent-items{
+    display: flex;
+    flex-direction: row;
+}
+
+.recent-items-content{
+    display: flex;
+    flex-direction: row;
+    width: 20vh;
+}
+
+.caption{
+    padding: 0 1.1rem;
+}
+
+.username{
+    padding: 0 1.1rem;
+}
+.date{
+    padding: 0 1.1rem;
+}
+.likes{
+    padding: 0 1.1rem;
 }

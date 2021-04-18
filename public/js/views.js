@@ -29,12 +29,14 @@ export function recentPosts(targetid, data) {
 
     applyTemplate(targetid, "recentposts-list", { "data": data })
 
-
 }
 
 export function popularPosts(targetid, data) {
 
     applyTemplate(targetid, "popularposts-list", { "data": data })
 
+}
 
+export function postView(targetid, data) {
+    applyTemplate(targetid, "postview", data)
 }
