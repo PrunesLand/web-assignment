@@ -15,12 +15,12 @@ window.addEventListener("modelUpdated", function (e) {
     console.log('modelUpdated triggered')
     let posts = Model.getPosts();
     //below the three random posts works
-    // let threepost = Model.getRandomPosts(3)
-    // view.threePosts('flowtow', threepost)
+    let threepost = Model.getRandomPosts(3)
+    view.threePosts('flowtow', threepost)
 
     // below the ten most recent posts descending
-    // let recent = Model.getRecentPosts()
-    // view.recentPosts('recentposts', recent)
+    let recent = Model.getRecentPosts()
+    view.recentPosts('recentpost-item', recent)
 
     // below the ten most popular posts descending
     // let popular = Model.getPopularPosts()

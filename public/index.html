@@ -50,10 +50,14 @@
       <div id="main-post-container">
 
         <div id="recentposts">
+          <ul id="recentpost-item">
 
+          </ul>
         </div>
         <div id="popularposts">
-
+          <ul>
+            <li id="popularpost-item"></li>
+          </ul>
         </div>
       </div>
 
@@ -84,23 +88,25 @@
 
   <script id="threeposts-list" type="text/x-handlebars-template">
           {{#each data}}
-              <div class="flowtow">
-                <img src={{p_url}}>
+              
+                <img src={{p_url}} class="threepost-img" >
                 <div>{{p_caption}}</div>
                 <div>{{p_likes}}</div>
                 <div>{{p_author.username}}</div>
-              </div>
+              
           {{/each}}
   </script>
 
   <script id="recentposts-list" type="text/x-handlebars-template">
     {{#each data}}
-          <img src={{p_url}} style="width: 50px;">
-          <div>{{p_caption}}</div>
-          <div>{{p_author.username}}</div>
-          <div>{{published_at}}</div>
-          <div>{{p_likes}}</div>
-          <button>Like</button>
+        <li>
+          <img src={{p_url}} class='tenImg'>
+          <div class="caption">{{p_caption}}</div>
+          <div class="username">{{p_author.username}}</div>
+          <div class="date">{{published_at}}</div>
+          <div class="likes">{{p_likes}}</div>
+          <button class="likeButton">Like</button>
+        </li>  
     {{/each}}
 </script>
 
