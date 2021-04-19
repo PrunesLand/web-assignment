@@ -101,7 +101,9 @@
     {{#each data}}
         <li class="recent-items">
           <div>
-            <img src={{p_url}} class='tenImg'>
+            <a href="#!/posts/{{id}}">
+              <img src={{p_url}} class='tenImg' data-id={{id}}>
+            </a>
           </div>
           <div class="recent-items-content">
             <div class="caption">{{p_caption}}</div>
@@ -118,7 +120,7 @@
   {{#each data}}
         <li class="recent-items">
           <div>
-            <a href="/#!/posts/">
+            <a href="#!/posts/{{id}}">
               <img src={{p_url}} class='tenImg' data-id={{id}}>
             </a>
           </div>
