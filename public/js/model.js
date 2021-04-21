@@ -89,6 +89,26 @@ const Model = {
     //      postId - is the id of the post
     // when the request is resolved, creates an "likeAdded" event
     addLike: function (postId) {
+        fetch('/posts/id', {
+            method: 'PUT',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify({
+                id: postId,
+                p_likes: Number(postId.p_likes) + 1
+            }),
+        })
+            .then((response) => {
+                return response.json()
+            })
+            .then((data) => {
+                console.log('test like button')
+                this.data.posts.push(data)
+                console.log(data)
+                let event = new CustomEvent("likeAdded");
+                window.dispatchEvent(event)
+            })
 
     },
 

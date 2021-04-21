@@ -23,7 +23,7 @@
     <div id="logo"></div>
     <nav>
       <ul>
-        <li><a href="#">Home</a></li>
+        <li><a href="/">Home</a></li>
         <li><a href="#!/all-posts">All Posts</a></li>
         <li><a href="#!/my-posts">My Posts</a></li>
         <li><a href="#whatis">About</a></li>
@@ -110,7 +110,7 @@
             <div class="username">{{p_author.username}}</div>
             <div class="date">{{published_at}}</div>
             <div class="likes">{{p_likes}}</div>
-            <button class="likeButton">Like</button>
+            <button class="likeButton" data-id={{id}} >Like</button>
           </div>
         </li>  
     {{/each}}
@@ -129,7 +129,7 @@
             <div class="username">{{p_author.username}}</div>
             <div class="date">{{published_at}}</div>
             <div class="likes">{{p_likes}}</div>
-            <button class="likeButton">Like</button>
+            <button class="likeButton" data-id={{id}}>Like</button>
           </div>
         </li>  
   {{/each}}
