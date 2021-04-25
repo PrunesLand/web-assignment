@@ -36,15 +36,12 @@
     <div id="heading">
 
       <hgroup>
-        <h1>Welcome to FlowTow</h1>
+        <h1>Welcome to FlowTow!</h1>
       </hgroup>
 
       <div id="target"></div>
 
       <div id="highlight">
-        <div id="flowtow">
-
-        </div>
       </div>
 
       <div id="main-post-container">
@@ -88,18 +85,19 @@
 
   <script id="threeposts-list" type="text/x-handlebars-template">
           {{#each data}}
-              
+          <div class="flowtow">
                 <img src={{p_url}} class="threepost-img" >
                 <div>{{p_caption}}</div>
                 <div>{{p_likes}}</div>
                 <div>{{p_author.username}}</div>
-              
+           </div>   
           {{/each}}
   </script>
 
   <script id="recentposts-list" type="text/x-handlebars-template">
     {{#each data}}
         <li class="recent-items">
+          <!-- <div>Recent Posts</div> -->
           <div>
             <a href="#!/posts/{{id}}">
               <img src={{p_url}} class='tenImg' data-id={{id}}>
@@ -110,7 +108,7 @@
             <div class="username">{{p_author.username}}</div>
             <div class="date">{{published_at}}</div>
             <div class="likes">{{p_likes}}</div>
-            <button class="likeButton" data-id={{id}} >Like</button>
+            <button class="likeButton" data-id={{id}} type="button">Like</button>
           </div>
         </li>  
     {{/each}}
@@ -119,6 +117,7 @@
   <script id="popularposts-list" type="text/x-handlebars-template">
   {{#each data}}
         <li class="recent-items">
+          <!-- <div>Popular Posts</div> -->
           <div>
             <a href="#!/posts/{{id}}">
               <img src={{p_url}} class='tenImg' data-id={{id}}>
@@ -129,7 +128,7 @@
             <div class="username">{{p_author.username}}</div>
             <div class="date">{{published_at}}</div>
             <div class="likes">{{p_likes}}</div>
-            <button class="likeButton" data-id={{id}}>Like</button>
+            <button class="likeButton" data-id={{id}} type="button">Like</button>
           </div>
         </li>  
   {{/each}}
@@ -145,7 +144,7 @@
             <div class="username">{{p_author.username}}</div>
             <div class="date">{{published_at}}</div>
             <div class="likes">{{p_likes}}</div>
-            <button class="likeButton">Like</button>
+            <button class="likeButton" type="button">Like</button>
           </div>
         </li>  
 </script>

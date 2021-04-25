@@ -19,7 +19,7 @@ window.addEventListener("modelUpdated", function (e) {
     let posts = Model.getPosts();
     //below the three random posts works
     let threepost = Model.getRandomPosts(3)
-    view.threePosts('flowtow', threepost)
+    view.threePosts('highlight', threepost)
 
     // below the ten most recent posts descending
     let recent = Model.getRecentPosts()
