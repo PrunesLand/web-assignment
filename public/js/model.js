@@ -88,7 +88,7 @@ const Model = {
     //      by submitting a PUT request to the server API
     //      postId - is the id of the post
     // when the request is resolved, creates an "likeAdded" event
-    addLike: function (postId) {
+    addLike: function (postId, data) {
         let likeUrl = '/posts/' + String(postId)
 
         fetch(likeUrl, {
@@ -96,10 +96,7 @@ const Model = {
             headers: {
                 'Content-type': 'application/json'
             },
-            body: JSON.stringify({
-                "p_likes": this.getPost(postId).p_likes + 1,
-
-            }),
+            body: JSON.stringify(data),
         })
             .then((response) => {
                 return response.json()
