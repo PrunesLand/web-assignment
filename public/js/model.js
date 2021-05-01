@@ -162,4 +162,14 @@ const Model = {
         return popularPost
     },
 
+    getLikes: function (postId) {
+        let posts = this.getPosts()
+
+        for (let i = 0; i < posts.length; i++) {
+            if (posts[i].id === postId) {
+                return Number(posts[i].p_likes)
+            }
+        }
+    }
+
 }

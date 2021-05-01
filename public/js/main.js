@@ -36,7 +36,7 @@ window.addEventListener("modelUpdated", function (e) {
 window.addEventListener("likeAdded", function (e) {
     console.log('likeadded triggered')
 
-
+    Model.updatePosts()
     bindings();
 })
 
@@ -47,9 +47,14 @@ function person_click_handler() {
     view.postView('post', post)
 }
 function like_click_handler() {
+    let id = this.dataset.id;
+    let likes = Model.getLikes(Number(id));
     const like_data = {
-
+        "p_likes": likes + 1
     }
+    Model.addLike(id, like_data)
+
+    console.log(likes)
     // create local id variable of button pressed
     //create like_data to sumit to add_like function
     //create a function that retruns likes of a post
