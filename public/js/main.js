@@ -30,6 +30,10 @@ window.addEventListener("modelUpdated", function (e) {
     view.popularPosts('popularpost-item', popular)
 
     bindings();
+    //person click handler should change the hash url to the id of the perosn clicked
+    //views of all posts should be within a single view function accepting all data for each view
+    // if statement inside modelupdated function like the lecture video under bindings
+    // 
 
 })
 
@@ -55,11 +59,6 @@ function like_click_handler() {
     Model.addLike(id, like_data)
 
     console.log(likes)
-    // create local id variable of button pressed
-    //create like_data to sumit to add_like function
-    //create a function that retruns likes of a post
-    //in like_data create the p_likes variable and call the find_like then plus 1
-    // last line is Model.addLike(id,like_data )
 }
 
 function bindings() {

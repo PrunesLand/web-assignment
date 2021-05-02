@@ -40,3 +40,9 @@ export function popularPosts(targetid, data) {
 export function postView(targetid, data) {
     applyTemplate(targetid, "postview", data)
 }
+
+export function allPosts(targetid, data) {
+    threePosts(targetid, data);
+    recentPosts(targetid, data);
+    popularPosts(targetid, data);
+}
