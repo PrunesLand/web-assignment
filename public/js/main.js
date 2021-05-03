@@ -40,12 +40,8 @@ window.addEventListener("modelUpdated", function (e) {
         view.threePosts('highlight', null);
         view.recentPosts('recentpost-item', null);
         view.popularPosts('popularpost-item', null);
-    }
 
-    //person click handler should change the hash url to the id of the perosn clicked
-    //views of all posts should be within a single view function accepting all data for each view
-    // if statement inside modelupdated function like the lecture video under bindings
-    // 
+    }
     bindings();
 
 })

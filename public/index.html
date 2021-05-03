@@ -30,6 +30,14 @@
       </ul>
     </nav>
   </header>
+  <form id="loginform" action="/auth/local">
+    <lable for=username> username: </lable>
+    <input name=username>
+    <label for=password> password: </label>
+    <input name=password>
+    <button type="submit" form="loginform" value="submit">Login </button>
+  </form>
+
 
   <div id="content">
 
@@ -135,7 +143,7 @@
 </script>
 
   <script id="postview" type="text/x-handlebars-template">
-        <li class="recent-items">
+
           <div>
             <img src={{p_url}} >
           </div>
@@ -144,9 +152,9 @@
             <div class="username">{{p_author.username}}</div>
             <div class="date">{{published_at}}</div>
             <div class="likes">{{p_likes}}</div>
-            <button class="likeButton" type="button">Like</button>
+            <button class="likeButton" type="button" data-id={{id}}>Like</button>
           </div>
-        </li>  
+         
 </script>
 
 </body>
