@@ -16,24 +16,37 @@ window.addEventListener("modelUpdated", function (e) {
     let hash = splitHash(window.location.hash)
 
     console.log('modelUpdated triggered')
-    let posts = Model.getPosts();
     //below the three random posts works
     let threepost = Model.getRandomPosts(3)
-    view.threePosts('highlight', threepost)
+
 
     // below the ten most recent posts descending
     let recent = Model.getRecentPosts()
-    view.recentPosts('recentpost-item', recent)
+
 
     // below the ten most popular posts descending
     let popular = Model.getPopularPosts()
-    view.popularPosts('popularpost-item', popular)
 
-    bindings();
+
+    console.log(hash)
+
+    if (hash.path == "") {
+        view.threePosts('highlight', threepost);
+        view.recentPosts('recentpost-item', recent);
+        view.popularPosts('popularpost-item', popular);
+    } else if (hash.path == "posts") {
+
+        view.postView('post', Model.getPost(Number(hash.id)))
+        view.threePosts('highlight', null);
+        view.recentPosts('recentpost-item', null);
+        view.popularPosts('popularpost-item', null);
+    }
+
     //person click handler should change the hash url to the id of the perosn clicked
     //views of all posts should be within a single view function accepting all data for each view
     // if statement inside modelupdated function like the lecture video under bindings
     // 
+    bindings();
 
 })
 
@@ -41,14 +54,14 @@ window.addEventListener("likeAdded", function (e) {
     console.log('likeadded triggered')
 
     Model.updatePosts()
-    bindings();
 })
 
+window.addEventListener("imageClicked", function (e) {
+    console.log('Post selected')
+    Model.updatePosts()
+})
 function person_click_handler() {
-    let id = this.dataset.id;
-    let post = Model.getPost(Number(id));
-    console.log(post)
-    view.postView('post', post)
+    Model.singlePost()
 }
 function like_click_handler() {
     let id = this.dataset.id;
@@ -70,6 +83,8 @@ function bindings() {
     for (let i = 0; i < like.length; i++) {
         like[i].onclick = like_click_handler;
     }
+
+
 }
 
 

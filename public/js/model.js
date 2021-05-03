@@ -170,6 +170,14 @@ const Model = {
                 return Number(posts[i].p_likes)
             }
         }
+    },
+
+    singlePost: function () {
+        let event = new CustomEvent("imageClicked");
+        window.dispatchEvent(event)
+        this.updatePosts()
+
     }
+
 
 }
