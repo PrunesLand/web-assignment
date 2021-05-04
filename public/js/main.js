@@ -10,6 +10,7 @@
 import { Model } from './model.js'
 import * as view from './views.js'
 import { splitHash } from './util.js'
+import { Auth } from './service.js'
 
 window.addEventListener("modelUpdated", function (e) {
 
@@ -70,6 +71,22 @@ function like_click_handler() {
     console.log(likes)
 }
 
+function login_form_handler(event) {
+    event.preventDefault()
+    console.log('the login form is ', this)
+
+    const username = this.elements['username'].value
+    const password = this.elements['password'].value
+
+    const authInfo = {
+        'identifier': username,
+        'password': password
+    }
+
+    //send authInfo to backend for user authentication
+    Auth.login(authInfo)
+}
+
 function bindings() {
     let image = document.getElementsByClassName("tenImg")
     let like = document.getElementsByClassName("likeButton")
@@ -80,6 +97,8 @@ function bindings() {
         like[i].onclick = like_click_handler;
     }
 
+    let loginform = document.getElementById('loginform')
+    loginform.onsubmit = login_form_handler
 
 }
 
