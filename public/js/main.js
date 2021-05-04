@@ -30,7 +30,7 @@ window.addEventListener("modelUpdated", function (e) {
 
 
     console.log(hash)
-
+    view.loginView("login", Auth.getUser())
     if (hash.path == "") {
         view.threePosts('highlight', threepost);
         view.recentPosts('recentpost-item', recent);
@@ -45,6 +45,11 @@ window.addEventListener("modelUpdated", function (e) {
     }
     bindings();
 
+})
+
+window.addEventListener("userLogin", function (e) {
+    console.log("userlogin triggered")
+    view.loginView("login", Auth.getUser())
 })
 
 window.addEventListener("likeAdded", function (e) {
@@ -78,13 +83,13 @@ function login_form_handler(event) {
     const username = this.elements['username'].value
     const password = this.elements['password'].value
 
-    const authInfo = {
-        'identifier': username,
-        'password': password
-    }
+    // const authInfo = {
+    //     'username': username,
+    //     'password': password
+    // }
 
     //send authInfo to backend for user authentication
-    Auth.login(authInfo)
+    Auth.login(username, password)
 }
 
 function bindings() {

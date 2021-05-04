@@ -31,14 +31,7 @@
     </nav>
   </header>
 
-  <form id="loginform">
-    <lable for=username> username: </lable>
-    <input name=username>
-    <label for=password> password: </label>
-    <input name=password>
-    <input type=submit value="Login">
-  </form>
-
+  <div id="login"></div>
 
   <div id="content">
 
@@ -156,6 +149,20 @@
             <button class="likeButton" type="button" data-id={{id}}>Like</button>
           </div>
          
+</script>
+
+  <script id="login-template" type="text/x-handlebars-template">
+  {{#if user}}
+  <p>Logged in as {{username.username}}</p>
+  {{else}}
+  <form id="loginform">
+    <label for=username> username: </label>
+    <input name=username>
+    <label for=password> password: </label>
+    <input name=password type="password" autocomplete="on">
+    <input type=submit>
+  </form>
+  {{/if}}
 </script>
 
 </body>

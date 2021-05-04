@@ -46,3 +46,7 @@ export function allPosts(targetid, data) {
     recentPosts(targetid, data);
     popularPosts(targetid, data);
 }
+
+export function loginView(targetid, data) {
+    applyTemplate(targetid, 'login-template', { "username": data })
+}

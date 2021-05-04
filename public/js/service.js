@@ -18,13 +18,16 @@ const Auth = {
     //      username - is the input username
     //      password - is the input password
     // when the request is resolved, creates a "userLogin" event
-    login: function (authInfo) {
+    login: function (username, password) {
         fetch('/auth/local', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(authInfo)
+            body: JSON.stringify({
+                username: username,
+                password: password
+            })
         })
             .then((response) => {
                 return response.json()
