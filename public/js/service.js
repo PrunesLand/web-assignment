@@ -25,7 +25,7 @@ const Auth = {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                username: username,
+                identifier: username,
                 password: password
             })
         })

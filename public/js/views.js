@@ -48,5 +48,5 @@ export function allPosts(targetid, data) {
 }
 
 export function loginView(targetid, data) {
-    applyTemplate(targetid, 'login-template', { "username": data })
+    applyTemplate(targetid, 'login-template', { "user": data })
 }

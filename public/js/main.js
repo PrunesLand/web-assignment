@@ -30,7 +30,7 @@ window.addEventListener("modelUpdated", function (e) {
 
 
     console.log(hash)
-    view.loginView("login", Auth.getUser())
+
     if (hash.path == "") {
         view.threePosts('highlight', threepost);
         view.recentPosts('recentpost-item', recent);
@@ -83,13 +83,9 @@ function login_form_handler(event) {
     const username = this.elements['username'].value
     const password = this.elements['password'].value
 
-    // const authInfo = {
-    //     'username': username,
-    //     'password': password
-    // }
-
     //send authInfo to backend for user authentication
     Auth.login(username, password)
+    event.preventDefault()
 }
 
 function bindings() {
@@ -110,7 +106,7 @@ function bindings() {
 
 window.onload = function () {
     Model.updatePosts()
-
+    view.loginView("login", Auth.getUser())
 };
 
 
