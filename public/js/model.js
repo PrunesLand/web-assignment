@@ -81,7 +81,16 @@ const Model = {
 
     // getUserPosts - return just the posts for one user as an array
     getUserPosts: function (userid) {
+        let posts = this.getPosts()
 
+        let userposts = []
+
+        for (let i = 0; i < posts.length; i++) {
+            if (posts[i].p_author.id === userid) {
+                userposts.push(posts[i])
+            }
+        }
+        return userposts;
     },
 
     // addLike - increase the number of likes by 1 
@@ -174,6 +183,19 @@ const Model = {
 
     singlePost: function () {
         let event = new CustomEvent("imageClicked");
+        window.dispatchEvent(event)
+        this.updatePosts()
+
+    },
+
+    allPost: function () {
+        let event = new CustomEvent("allPosts");
+        window.dispatchEvent(event)
+        this.updatePosts()
+
+    },
+    myPost: function () {
+        let event = new CustomEvent("myPosts");
         window.dispatchEvent(event)
         this.updatePosts()
 

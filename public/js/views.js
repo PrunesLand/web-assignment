@@ -50,3 +50,11 @@ export function allPosts(targetid, data) {
 export function loginView(targetid, data) {
     applyTemplate(targetid, 'login-template', { "user": data })
 }
+
+export function failMessage(targetid) {
+    applyTemplate(targetid, 'fail-login', { "fail": true })
+}
+
+export function notLog(targetid) {
+    applyTemplate(targetid, 'not-logged', { "notlog": true })
+}

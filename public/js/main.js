@@ -29,8 +29,7 @@ window.addEventListener("modelUpdated", function (e) {
     let popular = Model.getPopularPosts()
 
 
-    console.log(hash)
-
+    view.loginView("login", Auth.getUser())
     if (hash.path == "") {
         view.threePosts('highlight', threepost);
         view.recentPosts('recentpost-item', recent);
@@ -42,6 +41,24 @@ window.addEventListener("modelUpdated", function (e) {
         view.recentPosts('recentpost-item', null);
         view.popularPosts('popularpost-item', null);
 
+    } else if (hash.path == "all-posts") {
+        view.threePosts('highlight', null);
+        view.recentPosts('recentpost-item', recent);
+        view.popularPosts('popularpost-item', null);
+
+    } else if (hash.path == "my-posts") {
+        if (Auth.getUser() !== null) {
+            view.threePosts('highlight', null);
+            view.recentPosts('recentpost-item', Model.getUserPosts(Auth.getUser().id));
+            view.popularPosts('popularpost-item', null);
+        }
+        else {
+            view.notLog('popularpost-item')
+            view.threePosts('highlight', threepost);
+            view.recentPosts('recentpost-item', null);
+            view.popularPosts('popularpost-item', null);
+        }
+
     }
     bindings();
 
@@ -49,7 +66,9 @@ window.addEventListener("modelUpdated", function (e) {
 
 window.addEventListener("userLogin", function (e) {
     console.log("userlogin triggered")
+    console.log(Auth.getUser().username)
     view.loginView("login", Auth.getUser())
+    console.log(Model.getUserPosts(Auth.getUser().id))
 })
 
 window.addEventListener("likeAdded", function (e) {
@@ -62,8 +81,29 @@ window.addEventListener("imageClicked", function (e) {
     console.log('Post selected')
     Model.updatePosts()
 })
+
+window.addEventListener('failedLogin', function (e) {
+    console.log('Failed login triggered')
+    view.failMessage('error-message')
+})
+window.addEventListener('allPosts', function (e) {
+    console.log('All posts triggered')
+    Model.updatePosts()
+})
+window.addEventListener('myPosts', function (e) {
+    console.log('My posts triggered')
+
+
+})
+
 function person_click_handler() {
     Model.singlePost()
+}
+function allpost_click_handler() {
+    Model.allPost()
+}
+function mypost_click_handler() {
+    Model.myPost()
 }
 function like_click_handler() {
     let id = this.dataset.id;
@@ -77,7 +117,7 @@ function like_click_handler() {
 }
 
 function login_form_handler(event) {
-    event.preventDefault()
+
     console.log('the login form is ', this)
 
     const username = this.elements['username'].value
@@ -101,12 +141,18 @@ function bindings() {
     let loginform = document.getElementById('loginform')
     loginform.onsubmit = login_form_handler
 
+    let allpost = document.getElementById('allpost')
+    allpost.onclick = allpost_click_handler
+
+    let mypost = document.getElementById('mypost')
+    mypost.onclick = mypost_click_handler
+
 }
 
 
 window.onload = function () {
     Model.updatePosts()
-    view.loginView("login", Auth.getUser())
+
 };
 
 

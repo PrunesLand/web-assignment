@@ -30,10 +30,18 @@ const Auth = {
             })
         })
             .then((response) => {
-                return response.json()
+                if (response.status === 200) {
+                    console.log(response.status)
+                    return response.json()
+                }
+                else {
+                    console.log(response.status)
+                    let event = new CustomEvent('failedLogin')
+                    window.dispatchEvent(event)
+                    console.log('failed login')
+                }
             })
             .then((data) => {
-                console.log('Well Done!')
                 console.log('the response data is ', data)
                 this.userData = data
 

@@ -24,14 +24,15 @@
     <nav>
       <ul>
         <li><a href="/">Home</a></li>
-        <li><a href="#!/all-posts">All Posts</a></li>
-        <li><a href="#!/my-posts">My Posts</a></li>
+        <li><a href="#!/all-posts" id="allpost">All Posts</a></li>
+        <li><a href="#!/my-posts" id="mypost">My Posts</a></li>
         <li><a href="#whatis">About</a></li>
       </ul>
     </nav>
   </header>
 
   <div id="login"></div>
+  <div id="error-message"></div>
 
   <div id="content">
 
@@ -164,6 +165,18 @@
   </form>
   {{/if}}
 </script>
+
+  <script id="fail-login" type="text/x-handlebars-template">
+    {{#if fail}}
+    <p>Failed to login, try again</p>
+    {{/if}}
+  </script>
+
+  <script id="not-logged" type="text/x-handlebars-template">
+    {{#if notlog}}
+    <p>Please login first to view your posts</p>
+    {{/if}}
+  </script>
 
 </body>
 
