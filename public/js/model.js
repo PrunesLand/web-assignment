@@ -20,6 +20,8 @@ export { Model };
  *   "commentAdded" event when a request to add a new comment returns 
 */
 
+import { Auth } from './service.js'
+
 const Model = {
     postsUrl: '/posts',
     uploadUrl: '/upload',
@@ -77,6 +79,35 @@ const Model = {
     // when the request is resolved, creates an "postAdded" event
     addPost: function (postData) {
 
+        fetch(this.uploadUrl, {
+            method: 'POST',
+            headers: {
+                Authorization: `bearer ${Auth.getJWT()}`
+            },
+        })
+            .then((response) => {
+                return response.json()
+            })
+            .then((data) => {
+                console.log('the data is ', data)
+                return fetch(this.postsUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `bearer ${Auth.getJWT()}`
+                    },
+                    body: JSON.stringify(postData)
+                })
+            })
+            .then((response) => {
+                return response.json()
+            })
+            .then((data) => {
+                console.log(data)
+                this.data.posts.push(data)
+                let event = new CustomEvent('addPost');
+                window.dispatchEvent(event)
+            })
     },
 
     // getUserPosts - return just the posts for one user as an array

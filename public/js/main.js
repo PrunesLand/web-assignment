@@ -46,18 +46,12 @@ window.addEventListener("modelUpdated", function (e) {
         view.recentPosts('recentpost-item', recent);
         view.popularPosts('popularpost-item', null);
 
+
     } else if (hash.path == "my-posts") {
-        if (Auth.getUser() !== null) {
-            view.threePosts('highlight', null);
-            view.recentPosts('recentpost-item', Model.getUserPosts(Auth.getUser().id));
-            view.popularPosts('popularpost-item', null);
-        }
-        else {
-            // view.notLog('popularpost-item')
-            view.threePosts('highlight', null);
-            view.recentPosts('recentpost-item', null);
-            view.popularPosts('popularpost-item', null);
-        }
+        view.threePosts('highlight', null);
+        view.recentPosts('recentpost-item', Model.getUserPosts(Auth.getUser().id));
+        view.popularPosts('popularpost-item', null);
+        view.createForm('createPost', false)
 
     }
     bindings();
@@ -95,23 +89,34 @@ window.addEventListener('myPosts', function (e) {
 
 
 })
+window.addEventListener('addPost', function (e) {
+    console.log('Add post triggered')
+
+
+})
 
 function person_click_handler() {
     Model.singlePost()
 }
 function allpost_click_handler() {
-    Model.allPost()
+    if (Auth.getUser() !== null) {
+        view.createForm('createPost', false)
+        Model.allPost()
+    }
 }
 function mypost_click_handler() {
 
     if (Auth.getUser() !== null) {
+        view.createForm('createPost', true)
         Model.myPost()
     }
     else {
+
+
         view.notLog('popularpost-item')
         view.threePosts('highlight', null);
         view.recentPosts('recentpost-item', null);
-
+        Model.myPost()
     }
 }
 function like_click_handler() {
@@ -123,6 +128,25 @@ function like_click_handler() {
     Model.addLike(id, like_data)
 
     console.log(likes)
+}
+
+function addPost_handler(event) {
+    console.log('This form is ', this)
+
+    const url = this.elements['p_url'].value;
+    const caption = this.elements['p_caption'].value;
+    const author = Auth.getUser().username
+    console.log(author)
+    const postData = {
+        "p_url": url,
+        "p_caption": caption,
+        "p_author": author
+    }
+
+    event.preventDefault()
+    Model.addPost(postData)
+
+
 }
 
 function login_form_handler(event) {
@@ -147,8 +171,8 @@ function bindings() {
         like[i].onclick = like_click_handler;
     }
 
-    let loginform = document.getElementById('loginform')
-    loginform.onsubmit = login_form_handler
+    // let loginform = document.getElementById('loginform')
+    // loginform.onsubmit = login_form_handler
 
     let allpost = document.getElementById('allpost')
     allpost.onclick = allpost_click_handler
@@ -156,6 +180,16 @@ function bindings() {
     let mypost = document.getElementById('mypost')
     mypost.onclick = mypost_click_handler
 
+    // let addpost = document.getElementById('postform')
+    // addpost.onsubmit = addPost_handler
+
+    if (!Auth.getUser()) {
+        let loginform = document.getElementById('loginform')
+        loginform.onsubmit = login_form_handler
+    } else {
+        let addpost = document.getElementById('postform')
+        addpost.onsubmit = addPost_handler
+    }
 }
 
 

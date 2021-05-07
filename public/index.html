@@ -33,6 +33,7 @@
 
   <div id="login"></div>
   <div id="error-message"></div>
+  <div id="createPost"></div>
 
   <div id="content">
 
@@ -176,6 +177,18 @@
     {{#if notlog}}
     <p>Please login first to view your posts</p>
     {{/if}}
+  </script>
+
+  <script id="create-post" type="text/x-handlebars-template">
+
+    <form id="postform">
+      <label for=p_url> URL Link: </label>
+      <input name=p_url>
+      <label for=p_caption> caption: </label>
+      <input name=p_caption autocomplete="on">
+      <input type=submit>
+    </form>
+   
   </script>
 
 </body>

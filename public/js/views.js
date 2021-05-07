@@ -58,3 +58,7 @@ export function failMessage(targetid) {
 export function notLog(targetid) {
     applyTemplate(targetid, 'not-logged', { "notlog": true })
 }
+
+export function createForm(targetid, visible) {
+    applyTemplate(targetid, 'create-post', visible)
+}
