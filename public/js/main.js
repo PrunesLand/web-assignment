@@ -53,8 +53,8 @@ window.addEventListener("modelUpdated", function (e) {
             view.popularPosts('popularpost-item', null);
         }
         else {
-            view.notLog('popularpost-item')
-            view.threePosts('highlight', threepost);
+            // view.notLog('popularpost-item')
+            view.threePosts('highlight', null);
             view.recentPosts('recentpost-item', null);
             view.popularPosts('popularpost-item', null);
         }
@@ -103,7 +103,16 @@ function allpost_click_handler() {
     Model.allPost()
 }
 function mypost_click_handler() {
-    Model.myPost()
+
+    if (Auth.getUser() !== null) {
+        Model.myPost()
+    }
+    else {
+        view.notLog('popularpost-item')
+        view.threePosts('highlight', null);
+        view.recentPosts('recentpost-item', null);
+
+    }
 }
 function like_click_handler() {
     let id = this.dataset.id;
