@@ -29,13 +29,15 @@
         <li><a href="#whatis">About</a></li>
       </ul>
     </nav>
-    <div id="login"></div>
-    <div id="error-message"></div>
-    <div id="createPost"></div>
   </header>
 
 
   <div id="content">
+    <div id="form-container">
+      <div id="login"></div>
+      <div id="error-message"></div>
+      <div id="createPost"></div>
+    </div>
 
     <div id="heading">
 
@@ -51,11 +53,17 @@
       <div id="main-post-container">
         <div id="post"></div>
         <div id="recentposts">
+          <div id="posts-title">
+            <h2>Recent Posts</h2>
+          </div>
           <ul id="recentpost-item">
 
           </ul>
         </div>
         <div id="popularposts">
+          <div id="posts-title">
+            <h2>Popular Posts</h2>
+          </div>
           <ul id="popularpost-item">
 
           </ul>
@@ -92,8 +100,8 @@
           <div class="flowtow">
                 <img src={{p_url}} class="threepost-img" >
                 <div>{{p_caption}}</div>
-                <div>{{p_likes}}</div>
-                <div>{{p_author.username}}</div>
+                <div>Likes: {{p_likes}}</div>
+                <div>Author: {{p_author.username}}</div>
            </div>   
           {{/each}}
   </script>
@@ -102,7 +110,7 @@
     {{#each data}}
         <li class="recent-items">
           <!-- <div>Recent Posts</div> -->
-          <div>
+          <div class="posts-images">
             <a href="#!/posts/{{id}}">
               <img src={{p_url}} class='tenImg' data-id={{id}}>
             </a>
@@ -121,8 +129,7 @@
   <script id="popularposts-list" type="text/x-handlebars-template">
   {{#each data}}
         <li class="recent-items">
-          <!-- <div>Popular Posts</div> -->
-          <div>
+          <div class="posts-images">
             <a href="#!/posts/{{id}}">
               <img src={{p_url}} class='tenImg' data-id={{id}}>
             </a>

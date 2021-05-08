@@ -15,13 +15,13 @@
 }
 
 #content{
-    height: 120vh;
+    height: 150vh;
     
 }
 
 footer{
     height: 20vh;
-    background-color: gray;
+    background-color: grey;
 }
 
 /* header section */
@@ -62,7 +62,7 @@ header ul li a:hover{
 /* heading section */
 
 #heading{
-    height: 20vh;
+    height: 30vh;
     width: 100%;
     
 }
@@ -78,6 +78,7 @@ header ul li a:hover{
 }
 
 #heading hgroup h1{
+    
     color: #e76f51ff;
     font-size: 4rem;
 }
@@ -91,9 +92,10 @@ header ul li a:hover{
 
 
 #highlight{
+    background-color: #264653ff;
     width: 100%;
-    height: 25vh;
-    align-items: center;
+    height: 35vh;
+    align-content: center;
     display: flex;
     justify-content: center;
 }
@@ -103,6 +105,8 @@ header ul li a:hover{
     width: 90vh;
     display: flex;
     flex-direction: row;
+    text-align: center;
+
 }
 .threepost-img{
     height: 20vh;
@@ -112,21 +116,25 @@ header ul li a:hover{
 
 #main-post-container{
     width: 100%;
-    height: 60vh;
-    background-color: greenyellow;
+    height: 100vh;
+    background-color: #264653ff;
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
 
+#posts-title{
+    text-align: center;
+}
+
 #recentposts{
-    height: 40vh;
+    height: 60vh;
     width: 100%;
     
 }
 
 #popularposts{
-    height: 40vh;
+    height: 60vh;
     width: 100%;
     
 }
@@ -138,24 +146,51 @@ header ul li a:hover{
 .recent-items{
     display: flex;
     flex-direction: row;
+    justify-content: left;
+}
+
+.posts-images{
+ width: 50px;
 }
 
 .recent-items-content{
     display: flex;
     flex-direction: row;
-    width: 20vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.likeButton{
+
 }
 
 .caption{
-    padding: 0 1.1rem;
+    width: 100px;
 }
 
 .username{
-    padding: 0 1.1rem;
+    width: 30px;
 }
 .date{
     padding: 0 1.1rem;
 }
 .likes{
     padding: 0 1.1rem;
+}
+
+#form-container{
+    height: 5vh;
+    background-color: #264653ff;
+    padding-left: 5vh;
+}
+
+#login{
+    color: #e76f51ff;   
+    font-size: 1.2rem;
+}
+#error-message{
+    color: red;
+}
+#createPost{
+    
 }
