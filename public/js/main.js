@@ -22,13 +22,13 @@ window.addEventListener("modelUpdated", function (e) {
 
 
     // below the ten most recent posts descending
-    let recent = Model.getRecentPosts()
+    let recent = Model.getRecentPosts(4)
 
 
     // below the ten most popular posts descending
-    let popular = Model.getPopularPosts()
+    let popular = Model.getPopularPosts(4)
 
-
+    let allpost = Model.getRecentPosts(Model.getPosts().length)
     view.loginView("login", Auth.getUser())
     if (hash.path == "") {
         view.threePosts('highlight', threepost);
@@ -42,12 +42,14 @@ window.addEventListener("modelUpdated", function (e) {
         view.popularPosts('popularpost-item', null);
 
     } else if (hash.path == "all-posts") {
+
         view.threePosts('highlight', null);
-        view.recentPosts('recentpost-item', recent);
+        view.recentPosts('recentpost-item', allpost);
         view.popularPosts('popularpost-item', null);
 
 
     } else if (hash.path == "my-posts") {
+
         view.threePosts('highlight', null);
         view.recentPosts('recentpost-item', Model.getUserPosts(Auth.getUser().id));
         view.popularPosts('popularpost-item', null);
@@ -86,7 +88,7 @@ window.addEventListener('allPosts', function (e) {
 })
 window.addEventListener('myPosts', function (e) {
     console.log('My posts triggered')
-
+    Model.updatePosts()
 
 })
 window.addEventListener('addPost', function (e) {
@@ -101,8 +103,8 @@ function person_click_handler() {
 function allpost_click_handler() {
     if (Auth.getUser() !== null) {
         view.createForm('createPost', false)
-        Model.allPost()
     }
+    Model.allPost()
 }
 function mypost_click_handler() {
 
