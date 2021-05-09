@@ -22,40 +22,24 @@ window.addEventListener("modelUpdated", function (e) {
 
 
     // below the ten most recent posts descending
-    let recent = Model.getRecentPosts(4)
+    let recent = Model.getRecentPosts(9)
 
 
     // below the ten most popular posts descending
-    let popular = Model.getPopularPosts(4)
+    let popular = Model.getPopularPosts(9)
 
-    let allpost = Model.getRecentPosts(Model.getPosts().length)
+
     view.loginView("login", Auth.getUser())
-    if (hash.path == "") {
-        view.threePosts('highlight', threepost);
-        view.recentPosts('recentpost-item', recent);
-        view.popularPosts('popularpost-item', popular);
-    } else if (hash.path == "posts") {
 
-        view.postView('post', Model.getPost(Number(hash.id)))
-        view.threePosts('highlight', null);
-        view.recentPosts('recentpost-item', null);
+    view.threePosts('highlight', threepost);
+    view.recentPosts('recentpost-item', recent, true);
+    view.popularPosts('popularpost-item', popular);
+    if (hash.path == 'posts') {
+        view.postView('highlight', Model.getPost(Number(hash.id)))
+    } else if (hash.path == 'all-posts') {
         view.popularPosts('popularpost-item', null);
-
-    } else if (hash.path == "all-posts") {
-
-        view.threePosts('highlight', null);
-        view.recentPosts('recentpost-item', allpost);
-        view.popularPosts('popularpost-item', null);
-
-
-    } else if (hash.path == "my-posts") {
-
-        view.threePosts('highlight', null);
-        view.recentPosts('recentpost-item', Model.getUserPosts(Auth.getUser().id));
-        view.popularPosts('popularpost-item', null);
-        view.createForm('createPost', false)
-
     }
+
     bindings();
 
 })
@@ -75,6 +59,7 @@ window.addEventListener("likeAdded", function (e) {
 
 window.addEventListener("imageClicked", function (e) {
     console.log('Post selected')
+
     Model.updatePosts()
 })
 
@@ -83,12 +68,27 @@ window.addEventListener('failedLogin', function (e) {
     view.failMessage('error-message')
 })
 window.addEventListener('allPosts', function (e) {
+    let allpost = Model.getRecentPosts(Model.getPosts().length)
     console.log('All posts triggered')
+    if (Auth.getUser() !== null) {
+        view.createForm('createPost', false)
+    }
+    view.recentPosts('recentpost-item', allpost);
     Model.updatePosts()
 })
 window.addEventListener('myPosts', function (e) {
     console.log('My posts triggered')
-    Model.updatePosts()
+    if (Auth.getUser() !== null) {
+        view.createForm('createPost', true)
+        view.recentPosts('recentpost-item', Model.getUserPosts(Auth.getUser().id));
+    }
+    else {
+        view.notLog('highlight')
+        view.threePosts('highlight', null);
+        view.recentPosts('recentpost-item', null);
+    }
+    // Model.updatePosts()
+    e.preventDefault()
 
 })
 window.addEventListener('addPost', function (e) {
@@ -101,25 +101,10 @@ function person_click_handler() {
     Model.singlePost()
 }
 function allpost_click_handler() {
-    if (Auth.getUser() !== null) {
-        view.createForm('createPost', false)
-    }
     Model.allPost()
 }
 function mypost_click_handler() {
-
-    if (Auth.getUser() !== null) {
-        view.createForm('createPost', true)
-        Model.myPost()
-    }
-    else {
-
-
-        view.notLog('popularpost-item')
-        view.threePosts('highlight', null);
-        view.recentPosts('recentpost-item', null);
-        Model.myPost()
-    }
+    Model.myPost()
 }
 function like_click_handler() {
     let id = this.dataset.id;

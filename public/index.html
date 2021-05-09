@@ -53,17 +53,13 @@
       <div id="main-post-container">
         <div id="post"></div>
         <div id="recentposts">
-          <div id="posts-title">
-            <h2>Recent Posts</h2>
-          </div>
+
           <ul id="recentpost-item">
 
           </ul>
         </div>
         <div id="popularposts">
-          <div id="posts-title">
-            <h2>Popular Posts</h2>
-          </div>
+
           <ul id="popularpost-item">
 
           </ul>
@@ -98,18 +94,33 @@
   <script id="threeposts-list" type="text/x-handlebars-template">
           {{#each data}}
           <div class="flowtow">
+              <div class="img-container">
                 <img src={{p_url}} class="threepost-img" >
-                <div>{{p_caption}}</div>
-                <div>Likes: {{p_likes}}</div>
-                <div>Author: {{p_author.username}}</div>
+                <div>
+                  <h4>
+                    {{p_caption}}
+                  </h4>
+                </div>
+              </div>
+              <div class="content-container">
+                <h3>Author:</h3>
+                <div>{{p_author.username}}</div>
+                <h3>Popularity:</h3>
+                <div>{{p_likes}}</div>
+              </div>
            </div>   
           {{/each}}
   </script>
 
   <script id="recentposts-list" type="text/x-handlebars-template">
+    {{#if visible}}
+    <div id="posts-title">
+      <h2>Recent Posts</h2>
+    </div>
+    {{/if}}
     {{#each data}}
         <li class="recent-items">
-          <!-- <div>Recent Posts</div> -->
+          
           <div class="posts-images">
             <a href="#!/posts/{{id}}">
               <img src={{p_url}} class='tenImg' data-id={{id}}>
@@ -127,6 +138,9 @@
 </script>
 
   <script id="popularposts-list" type="text/x-handlebars-template">
+    <div id="posts-title">
+      <h2>Popular Posts</h2>
+    </div>
   {{#each data}}
         <li class="recent-items">
           <div class="posts-images">

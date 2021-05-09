@@ -21,7 +21,7 @@
 
 footer{
     height: 20vh;
-    background-color: grey;
+    background-color: #e76f51ff;
 }
 
 /* header section */
@@ -97,15 +97,19 @@ header ul li a:hover{
     height: 35vh;
     align-content: center;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
 }
 
-#flowtow{
-    height: 20vh;
-    width: 90vh;
+.flowtow{
+    height: 30vh;
+    width: 40vh;
     display: flex;
     flex-direction: row;
-    text-align: center;
+    text-align: left;
+    background-color: #f4a261ff;
+    border: 10px solid #e76f51ff;
+    justify-content: center;
+    align-items: center;
 
 }
 .threepost-img{
@@ -130,6 +134,8 @@ header ul li a:hover{
 #recentposts{
     height: 60vh;
     width: 100%;
+    display: flex;
+    justify-content: center;
     
 }
 
@@ -193,4 +199,14 @@ header ul li a:hover{
 }
 #createPost{
     
+}
+
+.content-container{
+    height: 10vh;
+    width: 100%;
+}
+
+.img-container{
+    text-align: center;
+    padding: 5px;
 }

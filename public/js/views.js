@@ -25,9 +25,9 @@ export function threePosts(targetid, data) {
 
 }
 
-export function recentPosts(targetid, data) {
+export function recentPosts(targetid, data, visible) {
 
-    applyTemplate(targetid, "recentposts-list", { "data": data })
+    applyTemplate(targetid, "recentposts-list", { "data": data, "visible": visible })
 
 }
 

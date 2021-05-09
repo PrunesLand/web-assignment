@@ -177,7 +177,7 @@ const Model = {
 
         let recentPost = []
 
-        for (let i = 0; i <= N; i++) {
+        for (let i = 1; i <= N; i++) {
             recentPost.push(posts[i])
         }
 
@@ -193,7 +193,7 @@ const Model = {
 
         let popularPost = []
 
-        for (let i = 0; i <= N; i++) {
+        for (let i = 1; i <= N; i++) {
             popularPost.push(posts[i])
         }
 
@@ -215,7 +215,7 @@ const Model = {
     singlePost: function () {
         let event = new CustomEvent("imageClicked");
         window.dispatchEvent(event)
-        this.updatePosts()
+
 
     },
 
