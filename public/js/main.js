@@ -33,7 +33,7 @@ window.addEventListener("modelUpdated", function (e) {
 
     view.threePosts('highlight', threepost);
     view.recentPosts('recentpost-item', recent, true);
-    view.popularPosts('popularpost-item', popular);
+    view.popularPosts('popularpost-item', popular, true);
     if (hash.path == 'posts') {
         view.postView('highlight', Model.getPost(Number(hash.id)))
     } else if (hash.path == 'all-posts') {

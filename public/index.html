@@ -51,7 +51,7 @@
       </div>
 
       <div id="main-post-container">
-        <div id="post"></div>
+        <!-- <div id="post"></div> -->
         <div id="recentposts">
 
           <ul id="recentpost-item">
@@ -128,8 +128,10 @@
           </div>
           <div class="recent-items-content">
             <div class="caption">{{p_caption}}</div>
-            <div class="username">{{p_author.username}}</div>
-            <div class="date">{{published_at}}</div>
+            <div class="items-container">
+              <div class="username">Made by: {{p_author.username}}</div>
+              <div class="date">{{published_at}}</div>
+            </div>
             <div class="likes">{{p_likes}}</div>
             <button class="likeButton" data-id={{id}} type="button">Like</button>
           </div>
@@ -138,9 +140,11 @@
 </script>
 
   <script id="popularposts-list" type="text/x-handlebars-template">
+  {{#if visible}}  
     <div id="posts-title">
       <h2>Popular Posts</h2>
     </div>
+  {{/if}}
   {{#each data}}
         <li class="recent-items">
           <div class="posts-images">
@@ -150,8 +154,10 @@
           </div>
           <div class="recent-items-content">
             <div class="caption">{{p_caption}}</div>
-            <div class="username">{{p_author.username}}</div>
-            <div class="date">{{published_at}}</div>
+            <div class="items-container">
+              <div class="username">Made by: {{p_author.username}}</div>
+              <div class="date">{{published_at}}</div>
+            </div>
             <div class="likes">{{p_likes}}</div>
             <button class="likeButton" data-id={{id}} type="button">Like</button>
           </div>

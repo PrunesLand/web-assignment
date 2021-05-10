@@ -31,9 +31,9 @@ export function recentPosts(targetid, data, visible) {
 
 }
 
-export function popularPosts(targetid, data) {
+export function popularPosts(targetid, data, visible) {
 
-    applyTemplate(targetid, "popularposts-list", { "data": data })
+    applyTemplate(targetid, "popularposts-list", { "data": data, "visible": visible })
 
 }
 

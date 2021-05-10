@@ -15,19 +15,24 @@
 }
 
 #content{
-    height: 150vh;
-    
+    height: 170vh;
+    background-color: #264653ff;
 }
 
 footer{
-    height: 20vh;
-    background-color: #e76f51ff;
+    height: 30vh;
+    background-color: #f4a261ff;
+    width: 100%;
+    display: flex;
+    justify-items: center;
+    flex-direction: column;
 }
 
 /* header section */
 header{
     height: 10vh;
     background-color: #264653ff;
+
 }
 
 header nav{
@@ -132,7 +137,7 @@ header ul li a:hover{
 }
 
 #recentposts{
-    height: 60vh;
+    height: 100vh;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -140,8 +145,10 @@ header ul li a:hover{
 }
 
 #popularposts{
-    height: 60vh;
+    height: 100vh;
     width: 100%;
+    display: flex;
+    justify-content: center;
     
 }
 
@@ -153,6 +160,23 @@ header ul li a:hover{
     display: flex;
     flex-direction: row;
     justify-content: left;
+    border: 5px solid #e76f51ff;
+    background-color: #f4a261ff;
+    padding: 5px;
+}
+
+#recentpost-item{
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#popularpost-item{
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 .posts-images{
@@ -175,10 +199,12 @@ header ul li a:hover{
 }
 
 .username{
-    width: 30px;
+    width: 100%;
+    text-align: left;
 }
 .date{
-    padding: 0 1.1rem;
+    width: 100%;
+    text-align: left;
 }
 .likes{
     padding: 0 1.1rem;
@@ -197,6 +223,7 @@ header ul li a:hover{
 #error-message{
     color: red;
 }
+
 #createPost{
     
 }
@@ -209,4 +236,56 @@ header ul li a:hover{
 .img-container{
     text-align: center;
     padding: 5px;
+}
+
+#social{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#social ul{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 15vh;
+    align-items: center;
+}
+
+#social ul li{
+    width: 15vh;
+    text-align: center;
+    list-style-type: none;
+}
+
+#social ul li a{
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: #264653ff;
+}
+
+.footer-tos{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    list-style-type: none;
+    height: 10vh;
+    align-items: center;
+}
+
+.footer-tos li{
+    width: 15vh;
+    text-align: center;
+}
+
+.footer-tos li a{
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: #264653ff;
+}
+#copyright{
+    width: 100%;
+    text-align: center;
 }
