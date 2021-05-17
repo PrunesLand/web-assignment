@@ -222,13 +222,13 @@ const Model = {
     allPost: function () {
         let event = new CustomEvent("allPosts");
         window.dispatchEvent(event)
-        this.updatePosts()
+        // this.updatePosts()
 
     },
     myPost: function () {
         let event = new CustomEvent("myPosts");
         window.dispatchEvent(event)
-        this.updatePosts()
+        // this.updatePosts()
 
     }
 

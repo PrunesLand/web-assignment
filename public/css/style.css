@@ -15,7 +15,7 @@
 }
 
 #content{
-    height: 170vh;
+    height: 190vh;
     background-color: #264653ff;
 }
 
@@ -226,6 +226,16 @@ header ul li a:hover{
 
 #createPost{
     
+}
+
+#noLog{
+    width: 100%;
+    height: 15vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: red;
+    font-size: 1.2rem;
 }
 
 .content-container{

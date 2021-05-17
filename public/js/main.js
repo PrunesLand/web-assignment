@@ -30,14 +30,16 @@ window.addEventListener("modelUpdated", function (e) {
 
 
     view.loginView("login", Auth.getUser())
-
-    view.threePosts('highlight', threepost);
-    view.recentPosts('recentpost-item', recent, true);
-    view.popularPosts('popularpost-item', popular, true);
+    if (hash.path === '') {
+        view.threePosts('highlight', threepost);
+        view.recentPosts('recentpost-item', recent, true);
+        view.popularPosts('popularpost-item', popular, true);
+    }
     if (hash.path == 'posts') {
         view.postView('highlight', Model.getPost(Number(hash.id)))
-    } else if (hash.path == 'all-posts') {
-        view.popularPosts('popularpost-item', null);
+        view.popularPosts('popularpost-item', null, false);
+        view.recentPosts('recentpost-item', null, false);
+
     }
 
     bindings();
@@ -59,7 +61,6 @@ window.addEventListener("likeAdded", function (e) {
 
 window.addEventListener("imageClicked", function (e) {
     console.log('Post selected')
-
     Model.updatePosts()
 })
 
@@ -68,13 +69,17 @@ window.addEventListener('failedLogin', function (e) {
     view.failMessage('error-message')
 })
 window.addEventListener('allPosts', function (e) {
-    let allpost = Model.getRecentPosts(Model.getPosts().length)
+    let allpost = Model.getPosts();
     console.log('All posts triggered')
     if (Auth.getUser() !== null) {
         view.createForm('createPost', false)
     }
-    view.recentPosts('recentpost-item', allpost);
-    Model.updatePosts()
+    view.recentPosts('recentpost-item', allpost, true);
+    view.popularPosts('popularpost-item', null, false);
+    view.threePosts('highlight', null);
+    view.notLog('noLog', false)
+    bindings();
+    e.preventDefault()
 })
 window.addEventListener('myPosts', function (e) {
     console.log('My posts triggered')
@@ -83,11 +88,11 @@ window.addEventListener('myPosts', function (e) {
         view.recentPosts('recentpost-item', Model.getUserPosts(Auth.getUser().id));
     }
     else {
-        view.notLog('highlight')
+        view.notLog('noLog', true)
         view.threePosts('highlight', null);
-        view.recentPosts('recentpost-item', null);
+        view.recentPosts('recentpost-item', null, false);
+        view.popularPosts('popularpost-item', null, false);
     }
-    // Model.updatePosts()
     e.preventDefault()
 
 })
@@ -100,8 +105,9 @@ window.addEventListener('addPost', function (e) {
 function person_click_handler() {
     Model.singlePost()
 }
-function allpost_click_handler() {
+function allpost_click_handler(event) {
     Model.allPost()
+
 }
 function mypost_click_handler() {
     Model.myPost()
