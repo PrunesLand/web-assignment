@@ -1,7 +1,7 @@
 /*
  *
- * Module: <name>
- * < short description here e.g. "This module implements main entry point...">
+ * Module: <Main>
+ * < This is a module designed to contain all the main processes required to listen to events. In the MVC pattern, this is the Controller and it listens to events triggered by view and performs actions based on the events triggered. >
  *
  * Student Name: Pranaya
  * Student Number:  45502773
@@ -71,9 +71,6 @@ window.addEventListener('failedLogin', function (e) {
 window.addEventListener('allPosts', function (e) {
     let allpost = Model.getPosts();
     console.log('All posts triggered')
-    if (Auth.getUser() !== null) {
-        view.createForm('createPost', false)
-    }
     view.recentPosts('recentpost-item', allpost, true);
     view.popularPosts('popularpost-item', null, false);
     view.threePosts('highlight', null);
@@ -85,7 +82,10 @@ window.addEventListener('myPosts', function (e) {
     console.log('My posts triggered')
     if (Auth.getUser() !== null) {
         view.createForm('createPost', true)
-        view.recentPosts('recentpost-item', Model.getUserPosts(Auth.getUser().id));
+        view.recentPosts('recentpost-item', Model.getUserPosts(Auth.getUser().id), true);
+        view.popularPosts('popularpost-item', null, false);
+        view.threePosts('highlight', null);
+        bindings();
     }
     else {
         view.notLog('noLog', true)

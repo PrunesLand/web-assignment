@@ -1,8 +1,8 @@
 export { Model };
 /*
  *
- * Module: <name>
- * < short description here e.g. "This module implements ...">
+ * Module: <Model>
+ * <This module functionas as a collection of all functions used in the web assignment. In the MVC pattern, this is the Model and it contains no logical programming on describing the data to the user.>
  *
  * Student Name:    Pranaya Anargya
  * Student Number:  45502773

@@ -1,7 +1,7 @@
 /*
  *
- * Module: <name>
- * < short description here e.g. "This module implements view functions...">
+ * Module: <View>
+ * < The purpose of this module is to store templates on presenting data to the user. In the MVC pattern, this is called the View and its purpose is to display the data to the user. the functions in this module is called in the main.js file to be execcuted.>
  *
  * Student Name: Pranaya Anargya
  * Student Number: 45502773
